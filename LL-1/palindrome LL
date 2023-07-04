@@ -1,6 +1,22 @@
-Check if a given linked list is palindrome or not. Return true or false.  
+/****************************************************************
+ 
+    Following is the class structure of the Node class:
 
-int length(node *head) {
+        class Node
+        {
+        public:
+	        int data;
+	        Node *next;
+	        Node(int data)
+	        {
+		        this->data = data;
+		        this->next = NULL;
+	        }
+        };
+
+*****************************************************************/
+
+int length(Node *head) {
    
     int count=0;
     while(head)
@@ -11,9 +27,9 @@ int length(node *head) {
     return count;
 }
 
-node *reverse(node*head2)
+Node *reverse(Node*head2)
 {
-    node *p=head2,*q=NULL,*r=NULL;
+    Node *p=head2,*q=NULL,*r=NULL;
     while(p)
     {
         r=q;
@@ -25,17 +41,17 @@ node *reverse(node*head2)
     return q;
 }
 
-bool check_palindrome(node* head)
+bool isPalindrome(Node* head)
 {
     //write your code here
-    node *p=head;
+    Node *p=head;
     int x=length(head)/2;
-    
+    if(head==NULL) return true;
     for(int i=1;i<x;i++)
     {
         p=p->next;
     }
-    node *head2=p->next;
+    Node *head2=p->next;
     p->next=NULL;
    head2= reverse(head2);
    
