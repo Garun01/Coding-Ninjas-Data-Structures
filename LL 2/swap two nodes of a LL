@@ -14,6 +14,57 @@ public:
     }
 };
 ***************/
+///////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+Node *swapNodes(Node *head, int i, int j)
+{
+	//Write your code here
+if(!head)
+return head;
+if(i==j)
+{
+	return head;
+}
+	Node* temp1=head;
+	Node* temp1prev=NULL;
+    Node* temp2=head;
+	Node* temp2prev=NULL;
+
+
+for(int x=0;x<i&&temp1;x++)  //temp1 should not be null
+{ temp1prev=temp1;
+  temp1=temp1->next;
+}
+
+for(int y=0;y<j&&temp2;y++)  //temp2 should not be null
+{ temp2prev=temp2;
+  temp2=temp2->next;
+}
+if (!temp1 || !temp2) {
+        return head; // Invalid indices i or j
+    }
+
+if (temp1prev) {
+        temp1prev->next = temp2;
+    } else {
+        head = temp2;         // if node to be swapped is head node then we have to point head to newly swapped node
+    }
+
+    if (temp2prev) {
+        temp2prev->next = temp1;
+    } else {
+        head = temp1;
+    }
+
+    Node* temp = temp1->next;
+    temp1->next = temp2->next;
+    temp2->next = temp;
+
+return head;
+}
+////////////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+
 node* swap_nodes(node *head,int i,int j)
 {
     if(i==j){
